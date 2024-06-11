@@ -4,32 +4,72 @@
     var userName = Model.UserName;
 }
 
+<style>
+        .chat-container {
+            background-color: white;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .input-group {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+        }
+        .input-group input[type="text"] {
+            flex: 8;
+        }
+        .input-group button {
+            flex: 1;
+        }
+    </style>
+
 <input hidden id="user" value="@userName"/>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome @userName</h1>
+    <h1 class="display-10 ">Witaj @userName</h1>
 </div>
 
-<div class="row">
-    <div class="col-12">
-        <input placeholder="Wiadomość..." class="form-control" id="userMessage"/>
-        <button id="btnSend" class="btn btn-primary w-100">Wyślij</button>
-    </div>
-    <ul id="messages">
-    @foreach (var message in Model.Messages)
-    {
-        <li><strong>@message.UserName</strong>: @message.Message <em>(@message.CreatedOn)</em></li>
-    }
-    </ul>
-    <div class="col-12">
-        <ul class="list-unstyled" id="userMessages">
-            
-        </ul>
-    </div>
+<div class="container-md container-fluid">
+    <main role="main" class="pb-3">
+        <div class="chat-container">
+            <div class="messages">
+                <ul id="messages" class="list-unstyled">
+                    @foreach (var message in Model.Messages.OrderBy(m => m.CreatedOn))
+                    {
+                        <li><strong>[@message.CreatedOn.ToString("dd/MM/yyyy HH:mm")], @message.UserName</strong>: @message.Message</li>
+                    }
+                    <li class="list-unstyled" id="userMessages"></li>
+                </ul>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Wiadomość..." class="form-control" id="userMessage"/>
+                <button type="button" id="btnSend" class="btn btn-primary">Wyślij</button>
+            </div>
+        </div>
+    </main>
 </div>
 
 @section Scripts
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="js/chatApp.js"></script>
+    <script>
+        $(document).ready(function() {
+            var messagesDiv = $('.messages');
+            messagesDiv.scrollTop(messagesDiv.prop("scrollHeight"));
+        });
+    </script>
 }
