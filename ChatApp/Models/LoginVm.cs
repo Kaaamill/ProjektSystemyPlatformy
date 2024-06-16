@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ChatApp.Models
 {
-    public class SignInVm
+    public class LoginVm
     {
         [Required]
         public string UserName { get; set; }

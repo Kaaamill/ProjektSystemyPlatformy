@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ChatApp.Models;
 using System.Diagnostics;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ChatApp.Controllers
 {
@@ -66,13 +70,68 @@ namespace ChatApp.Controllers
                 return View(vm);
             }
 
+            var user = _context.ChatUsers.SingleOrDefault(u => u.UserName == vm.UserName);
+            if (user == null || !VerifyPassword(vm.Password, user.Password))
+            {
+                ModelState.AddModelError("", "Invalid username or password");
+                return View(vm);
+            }
+
             SignInUser(vm.UserName);
             return RedirectToAction("Index");
         }
 
-        private void SignInUser(string vmUserName)
+        [HttpGet]
+        public IActionResult Register()
         {
-            HttpContext.Session.SetString(key: UserKey, value: vmUserName);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterVm vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            if (_context.ChatUsers.Any(u => u.UserName == vm.UserName))
+            {
+                ModelState.AddModelError("UserName", "Username already exists");
+                return View(vm);
+            }
+
+            var user = new ChatUser
+            {
+                UserName = vm.UserName,
+                Password = HashPassword(vm.Password)
+            };
+
+            _context.ChatUsers.Add(user);
+            _context.SaveChanges();
+
+            SignInUser(vm.UserName);
+            return RedirectToAction("Index");
+        }
+
+        private void SignInUser(string userName)
+        {
+            HttpContext.Session.SetString(key: UserKey, value: userName);
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            }
+        }
+
+        private bool VerifyPassword(string enteredPassword, string storedPassword)
+        {
+            var hashedEnteredPassword = HashPassword(enteredPassword);
+            return hashedEnteredPassword == storedPassword;
         }
 
         public IActionResult Privacy()
@@ -80,14 +139,10 @@ namespace ChatApp.Controllers
             return View();
         }
 
-        // Dodaj metodę TestSession tutaj
         public IActionResult TestSession()
         {
-            // Ustaw wartość sesji
             HttpContext.Session.SetString("TestKey", "TestValue");
-            // Pobierz wartość sesji
             var value = HttpContext.Session.GetString("TestKey");
-            // Sprawdź, czy wartość sesji jest prawidłowa
             if (value == "TestValue")
             {
                 return Content("Sesja działa poprawnie.");
