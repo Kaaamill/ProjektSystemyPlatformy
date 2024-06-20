@@ -11,6 +11,7 @@ namespace ChatApp.Models
 
         public DbSet<ChatMessage> ChatMessages { get; set; }
         public DbSet<ChatUser> ChatUsers { get; set; }
+        public DbSet<Chat> Chats { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -18,5 +18,10 @@ namespace ChatApp.Models
 
         [Required]
         public DateTime CreatedOn { get; set; }
+
+        public int ChatId { get; set; }
+
+        [ForeignKey("ChatId")]
+        public Chat Chat { get; set; }
     }
 }

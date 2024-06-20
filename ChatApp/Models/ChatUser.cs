@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ChatApp.Models;
 
 public class ChatUser
 {
@@ -10,4 +12,7 @@ public class ChatUser
     
     [Required]
     public string Password { get; set; }
+
+    public ICollection<Chat> Chats { get; set; } = new List<Chat>();
+
 }
