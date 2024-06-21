@@ -4,45 +4,14 @@
     var userName = Model.UserName;
 }
 
-<style>
-        .chat-container {
-            background-color: white;
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-        }
-        .messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 10px;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .input-group {
-            border-top: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-        }
-        .input-group input[type="text"] {
-            flex: 8;
-        }
-        .input-group button {
-            flex: 1;
-        }
-    </style>
 
 <input hidden id="user" value="@userName"/>
 
-<div class="text-center">
-    <h1 class="display-10 ">Witaj @userName</h1>
+<div>
+    <h1>Witaj @userName</h1>
 </div>
 
-<div class="container-md container-fluid">
+<div class="container-md">
     <main role="main" class="pb-3">
         <div class="chat-container">
             <div class="messages">
@@ -56,7 +25,7 @@
             </div>
             <div class="input-group">
                 <input type="text" placeholder="Wiadomość..." class="form-control" id="userMessage"/>
-                <button type="button" id="btnSend" class="btn btn-primary">Wyślij</button>
+                <button type="button" id="btnSend">Wyślij</button>
             </div>
         </div>
     </main>
