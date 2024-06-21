@@ -9,15 +9,20 @@
     <link rel="stylesheet" href="~/ChatApp.styles.css" asp-append-version="true"/>
     <style>
         body {
-            background: linear-gradient(to bottom, #568699, #ffffff);
+            background: linear-gradient(to bottom, #fff, #465);
         }
         .navbar-nav .nav-link {
             transition: background-color 0.3s;
         }
         .navbar-nav .nav-link:hover {
-            background-color: #007bff;
-            color: white !important;
+            background-color: #8a8;
+            color: #fff !important;
         }
+
+        .link {
+            color: #198754;
+        }
+        
     </style>
 </head>
 <body>
@@ -55,7 +60,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2024 - Collegium Da Vinci - <a asp-area="" asp-controller="Home">Privacy</a>
+        &copy; 2024 - Collegium Da Vinci - <a class="link" asp-area="" asp-controller="Home">Privacy</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
