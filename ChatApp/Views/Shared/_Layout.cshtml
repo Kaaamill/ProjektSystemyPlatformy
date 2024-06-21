@@ -6,19 +6,8 @@
     <title>@ViewData["Title"] - Czat CDV</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/ChatApp.styles.css" asp-append-version="true"/>
-    <style>
-        body {
-            background: linear-gradient(to bottom, #568699, #ffffff);
-        }
-        .navbar-nav .nav-link {
-            transition: background-color 0.3s;
-        }
-        .navbar-nav .nav-link:hover {
-            background-color: #007bff;
-            color: white !important;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/ChatApp.styles.css" asp-append-version="true"/>
+
 </head>
 <body>
 <header>
@@ -55,7 +44,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2024 - Collegium Da Vinci - <a asp-area="" asp-controller="Home">Privacy</a>
+        &copy; 2024 - Collegium Da Vinci - <a class="link" asp-area="" asp-controller="Home">Privacy</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
