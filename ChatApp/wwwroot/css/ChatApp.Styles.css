@@ -1,0 +1,172 @@
+body {
+    background: linear-gradient(to bottom, #fff, #465);
+}
+.navbar-nav .nav-link {
+    transition: background-color 0.3s;
+}
+.navbar-nav .nav-link:hover {
+    background-color: #263 !important;
+    color: #fff !important;
+}
+
+.link {
+    color: #122;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+  
+  a {
+    color: #132;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #132;
+    border-color: #263;
+  }
+  
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #263;
+    border-color: #132;
+  }
+  
+  .border-top {
+    border-top: 1px solid #e5e5e5;
+  }
+  .border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  
+  button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+  }
+  
+  .a {
+    color: #263 !important;
+  }
+  
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+  }
+
+  .container {
+    color: #fff;
+  }
+
+  .chat-container {
+    background-color: #fff; 
+    max-width: 900px;
+    margin: 20px auto;
+    border: 8px solid #8a8;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.messages li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: #122; 
+}
+
+.messages li:last-child {
+    border-bottom: none;
+}
+
+.input-group, .form-group {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #465; 
+    color: #fff;
+}
+
+.input-group {
+  display: flex;
+}
+
+.form-group {
+  display: grid;
+}
+
+.input-group input[type="text"] {
+    flex: 8;
+    border: 1px solid #eed; 
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: #122; 
+    color: #eed; 
+}
+
+.input-group button {
+    flex: 1;
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: #122; 
+    color: #fff; 
+    cursor: pointer;
+}
+
+h1 {
+    color: #133; 
+    text-align: center;
+    margin-top: 20px;
+}
+
+ /* Custom scrollbar styles */
+.messages::-webkit-scrollbar {
+    width: 12px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: #465;
+    border-radius: 10px; 
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: #ddc; 
+    border-radius: 10px; 
+    border: 3px solid #465; 
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background-color: #d55;
+}
+
+/* Firefox scrollbar styles */
+.messages {
+    scrollbar-width: thin;
+    scrollbar-color: #ddc #465;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 3px solid transparent; 
+    background-clip: content-box;
+}
